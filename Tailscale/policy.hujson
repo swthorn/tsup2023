@@ -1,0 +1,51 @@
+{
+	// Access control lists.
+	"ACLs": [
+		// Match absolutely everything. Comment out this section if you want
+		// to define specific ACL restrictions.
+		// {
+		// 	"Action": "accept",
+		// 	"src":  ["*"],
+		// 	"dst":  ["*:*"],
+		// },
+		//-------------------------------------------------------------------------------------------------------------------------------
+		{
+			"action": "accept",
+			"src":  ["tag:consumer"],
+			"dst": [
+				"tag:server:2049", // NFS (TCP and UDP)
+				"tag:server:111", // NFS (TCP and UDP)
+			],
+		},
+		{
+			"action": "accept",
+			"src":  ["tag:consumer"],
+			"proto":  "tcp",
+			"dst": [
+				"tag:gaming:47984", // Moonlight (tcp)
+				"tag:gaming:47989", // Moonlight (tcp)
+				"tag:gaming:48010", // Sunshine (tcp and udp)
+				"tag:gaming:27036", // Steam Remote Play (tcp)
+			],
+		},
+		{
+			"action": "accept",
+			"src":  ["tag:consumer"],
+			"proto":  "udp",
+			"dst": [
+				"tag:gaming:5353", // https://github.com/moonlight-stream/moonlight-docs/wiki/Setup-Guide
+				"tag:gaming:47998-48000", // Sunshine (udp)
+				"tag:gaming:48002", // Sunshine (udp)
+				"tag:gaming:48010", // Sunshine(tcp and udp)
+				"tag:gaming:27031-27036", // Steam Remote Play (udp)
+			],
+		}
+		//-------------------------------------------------------------------------------------------------------------------------------
+	],
+	"tagOwners": {
+		"tag:server":       ["autogroup:admin"],
+		"tag:gaming":       ["autogroup:admin"],
+		"tag:consumer":     ["autogroup:admin"],
+	},
+}
+
