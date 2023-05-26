@@ -1,0 +1,1 @@
+echo >script.vbs set shell = CreateObject("WScript.Shell"):shell.SendKeys "^{F13}" & script.vbs

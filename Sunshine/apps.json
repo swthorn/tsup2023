@@ -1,0 +1,40 @@
+{
+    "env": {
+        "PATH": "$(PATH);$(ProgramFiles(x86))\\Steam"
+    },
+    "apps": [
+        {
+            "name": "Desktop",
+            "image-path": "desktop.png"
+        },
+        {
+            "name": "Steam Big Picture",
+            "detached": [
+                "steam steam:\/\/open\/bigpicture"
+            ],
+            "image-path": "steam.png"
+        },
+        {
+            "name": "Steam Big Picture Toggle HDR",
+            "output": "",
+            "cmd": "",
+            "prep-cmd": [
+                {
+                    "do": "D:\\Program Files\\Sunshine\\hdr.bat",
+                    "undo": "D:\\Program Files\\Sunshine\\hdr.bat"
+                }
+            ],
+            "detached": [
+                "steam steam:\/\/open\/bigpicture"
+            ],
+            "image-path": ""
+        },
+        {
+            "name": "Toggle HDR",
+            "output": "",
+            "cmd": "hdr.bat",
+            "image-path": "",
+            "working-dir": "D:\\Program Files\\Sunshine\\"
+        }
+    ]
+}
